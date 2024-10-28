@@ -1,0 +1,14 @@
+Create an empty array called myLibrary
+Create a Book function with: title, author, pages, isRead
+Create a function to add the object book to the array myLibrary
+It should take the data from the user
+Create a loop function to iterate the array in order to create and add the book card
+
+Create a pop up for the form
+Create a form (title, author, pages, isRead)
+Create a newBook btn to show the form pop up
+Use event.preventDefault() because there is no server
+
+Add a btn to delete the card
+It should have a data-index attribute to remove it from the array
+Add a btn with a toggle for the isRead
