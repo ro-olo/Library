@@ -7,18 +7,13 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead;
 }
 
-function addBook(book) {
-    myLibrary.push(book);
-}
-
-//funzione per iterare l'array e creare un elemento per ogni libro nel DOM
-//i libri devono essere visti come cards
-//sistemare l'index nella card non nel form
-
 const libraryContainer = document.getElementById("libraryContainer");
 
 function displayBooks() {
-    myLibrary.forEach((book, index) => {
+    myLibrary.forEach((book, index) =>displayCard(book, index, libraryContainer));
+}
+    
+function displayCard(book, index, container) {
         const bookCard = document.createElement("div");
         bookCard.classList.add("book_card");
 
@@ -28,19 +23,55 @@ function displayBooks() {
 
         const author = document.createElement("p");
         author.classList.add("book_author");
-        author.textContent = "Author: ${book.author}";
+        author.textContent = `Author: ${book.author}`;
 
         const pages = document.createElement("p");
         pages.classList.add("book_pages");
-        pages.textContent = "Pages: ${book.pages}";
+        pages.textContent = `Pages: ${book.pages}`;
 
-        const isRead = document.createElement("p");
-        isRead.classList.add("book_isRead");
-        isRead.textContent = "Read: ${book.isRead ? 'Yes' : 'No'}";
-    })
+        const readStatusContainer = document.createElement("div");
+        readStatusContainer.classList.add("read_container");
+
+        const readStatusLabel = document.createElement("label");
+        readStatusLabel.textContent = "Read:";
+
+        const readCheckbox = document.createElement("input");
+        readCheckbox.type = "checkbox";
+        readCheckbox.checked = book.isRead;
+        readCheckbox.addEventListener("click", () => toggleRead(index));
+
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("remove_btn");
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", () => removeBook(index));
+
+        readStatusContainer.appendChild(readStatusLabel);
+        readStatusContainer.appendChild(readCheckbox);
+
+        bookCard.appendChild(title);
+        bookCard.appendChild(author);
+        bookCard.appendChild(pages);
+        bookCard.appendChild(readStatusContainer);
+        bookCard.appendChild(removeBtn);
+
+        container.appendChild(bookCard);
+    }
+
+function removeBook(index, container) {
+    myLibrary.splice(index, 1);
+    container.innerHTML = "";
+    displayBooks();
 }
 
-//form
+function addBook(book, container) {
+    myLibrary.push(book);
+    container.innerHTML = "";
+    displayBooks();
+}
+
+function toggleRead(index) {
+    myLibrary[index].isRead = !myLibrary[index].isRead;
+}
 
 const newBookBtn = document.getElementById("newBookBtn");
 const formDialog = document.getElementById("formDialog");
@@ -54,4 +85,18 @@ closeDialog.addEventListener("click", () => {
     formDialog.close();
 })
 
-//event.preventDefault()
+document.getElementById("book_form").addEventListener("submit",
+    function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const pages = document.getElementById("pages").value;
+        const isRead = document.getElementById("isRead").checked;
+
+        const newBook = new Book(title, author, pages, isRead);
+        addBook(newBook, libraryContainer);
+
+        document.getElementById("book_form").reset();
+        formDialog.close();
+    });
