@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Library</title>
 </head>
 <body>
     <script src="script.js" defer></script>
 
+    <header>
     <h1>My Library</h1>
     <button id="newBookBtn">New Book</button>
-
+    </header>
+    
     <div id="libraryContainer"></div>
 
     <dialog id="formDialog">
@@ -25,11 +30,15 @@
             <label for="pages">Pages:</label>
             <input type="number" id="pages" name="pages" required>
             
-            <label for="isRead">Read:</label>
-            <input type="checkbox" id="isRead" name="isRead">
-
-            <button type="submit">Add Book</button>
-            <button type="button" id="closeDialog">Cancel</button>
+            <div class="checkRead">
+                <label for="isRead">Read:</label>
+                <input type="checkbox" id="isRead" name="isRead">
+            </div>
+            
+            <div class="formBtns">
+                <button type="submit" id="addBook">Add Book</button>
+                <button type="button" id="closeDialog">Cancel</button>
+            </div>
         </form>
     </dialog>
 </body>

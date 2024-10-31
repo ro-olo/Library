@@ -1,0 +1,139 @@
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f5c7f7;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+header {
+    background-color: #27296d;
+    color: #f5c7f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+    margin: 0px;
+    height: 100px;
+}
+
+h1 {
+    margin: 0;
+}
+
+#newBookBtn {
+    background-color: #f5c7f7;
+    color: #8673dd;
+    font-weight: 800;
+    border: 3px solid #1c1d4f;
+    margin-left: auto;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#newBookBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 2px 5px rgba(8, 2, 29, 0.4);
+    color:#1c1d4f;
+}
+
+#formDialog {
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f5c7f7;
+    color:#1c1d4f;
+    box-shadow: 0px 2px 5px rgba(8, 2, 29, 0.4);
+    width: 300px;
+}
+
+#book_form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.checkRead {
+    display: flex;
+    align-items: center;
+}
+
+.formBtns {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+#addBook, #closeDialog {
+    background-color: #8673dd;
+    color: #f9dcfa ;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#addBook:hover, #closeDialog:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 2px 5px rgba(8, 2, 29, 0.4);
+    color: #f9dcfa;
+    background-color: #27296d;
+}
+
+input {
+    padding-left: 5px;
+    height: 25px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: 2px solid #8673dd;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+#isRead {
+    height: 20px;
+    width: 20px;
+    border: none;
+    outline: none;
+}
+
+#libraryContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
