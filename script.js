@@ -1,4 +1,9 @@
-const myLibrary = [];
+const myLibrary = [
+    new Book("The secret history", "Donna Tartt", 622, true),
+    new Book("Heartstopper", "Alice Oseman", 288, true),
+    new Book("Returning to Haifa", "Ghassan Kanafani", 76, true),
+    new Book("Confessions", "Kanae Minato", 240, true)
+];
 
 function Book(title, author, pages, isRead) {
     this.title = title;
@@ -13,6 +18,8 @@ function displayBooks() {
     myLibrary.forEach((book, index) =>displayCard(book, index, libraryContainer));
 }
     
+document.addEventListener("DOMContentLoaded", displayBooks);
+
 function displayCard(book, index, container) {
         const bookCard = document.createElement("div");
         bookCard.classList.add("book_card");
