@@ -15,6 +15,7 @@ function Book(title, author, pages, isRead) {
 const libraryContainer = document.getElementById("libraryContainer");
 
 function displayBooks() {
+    libraryContainer.innerHTML = "";
     myLibrary.forEach((book, index) =>displayCard(book, index, libraryContainer));
 }
     
@@ -64,9 +65,8 @@ function displayCard(book, index, container) {
         container.appendChild(bookCard);
     }
 
-function removeBook(index, container) {
+function removeBook(index) {
     myLibrary.splice(index, 1);
-    container.innerHTML = "";
     displayBooks();
 }
 
